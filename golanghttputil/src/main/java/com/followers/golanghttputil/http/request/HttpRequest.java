@@ -223,4 +223,22 @@ public class HttpRequest extends ObjectLoader {
     }
 
 
+    /**
+     * 获取用户信息
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getUserInfo(Map<String,Object> map){
+
+        return observable(httpService.getUserInfo(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
 }

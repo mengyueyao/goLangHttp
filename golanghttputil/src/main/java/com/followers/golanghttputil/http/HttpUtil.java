@@ -176,9 +176,10 @@ public class HttpUtil {
     }
 
     //支付成功回调
-    public static void payCallback(String token, String orderNo,final HttpListener<Integer> listener) {
+    public static void payCallback(String user_pk,String token, String google_pay_id,final HttpListener<Integer> listener) {
         Map<String, Object> map = new HashMap<>();
-        map.put("orderNo", orderNo);
+        map.put("user_pk", user_pk);
+        map.put("google_pay_id",google_pay_id);
         map.put("token", token);
         Observable observable = new HttpRequest().payCallback(map);
 
@@ -195,7 +196,7 @@ public class HttpUtil {
                         listener.onSuccess(1);
                     }else{
 
-                        listener.onError("支付失败");
+                        listener.onSuccess(0);
                     }
                 }
 
@@ -379,6 +380,34 @@ public class HttpUtil {
 
         }.post(observable);
     }
+
+
+    public static void getUserInfo(String user_pk,final HttpListener<UserInfoBean> listener) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk",user_pk);
+        Observable observable = new HttpRequest().getUserInfo(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                UserInfoBean userInfoBean = GsonUtil.format(s,UserInfoBean.class);
+
+                if(null != userInfoBean){
+
+                    listener.onSuccess(userInfoBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
 
 
 

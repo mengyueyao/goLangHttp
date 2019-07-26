@@ -58,5 +58,9 @@ public interface HttpService {
      @POST("ad/rate_status")
      Observable<JsonElement> getIsRate(@Body Map<String,Object> map);
 
+     //获取用户信息
+     @POST("userinfo")
+     Observable<JsonElement> getUserInfo(@Body Map<String,Object> map);
+
 
 }
