@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.followers.golanghttputil.util.Utils;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,5 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
         Utils.setContext(this);
 
+
     }
+
+
+
 }

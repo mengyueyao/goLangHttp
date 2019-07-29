@@ -1,8 +1,9 @@
 package com.followers.golanghttputil.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CoinsBean {
+public class CoinsBean implements Serializable {
 
 
     /**
@@ -49,7 +50,7 @@ public class CoinsBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * id : 1
          * package_name : insta.likes.followers.photo.golangapidemo
