@@ -1,6 +1,8 @@
 package com.followers.golanghttputil.http;
 
 
+import android.util.Log;
+
 import com.followers.golanghttputil.bean.BuyCoinsBean;
 import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
@@ -94,6 +96,8 @@ public class HttpUtil {
         new RequestManager() {
             @Override
             public void success(String s) {
+
+                Log.e("xxxx",s);
 
                 UserInfoBean userInfoBean = GsonUtil.format(s,UserInfoBean.class);
 

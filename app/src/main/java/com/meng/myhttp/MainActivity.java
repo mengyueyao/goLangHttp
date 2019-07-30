@@ -2,8 +2,8 @@ package com.meng.myhttp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
+import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.http.HttpListener;
 import com.followers.golanghttputil.http.HttpUtil;
 import com.followers.golanghttputil.util.Utils;
@@ -19,11 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
         Utils.setContext(this);
 
-        HttpUtil.Consume("6060192636", 1000000 + "", new HttpListener<Integer>() {
+        HttpUtil.login("6060192636", "mengyueyaovip", "https://www.baidu.com.jpg", new HttpListener<UserInfoBean>() {
             @Override
-            public void onSuccess(Integer bean) {
+            public void onSuccess(UserInfoBean bean) {
 
-                Log.e("xxxxx",bean+"==");
             }
 
             @Override
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }

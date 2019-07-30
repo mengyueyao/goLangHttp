@@ -83,7 +83,7 @@ public class UserInfoBean {
         private int total_ad_coin;
         private String vip_expire_time;
         private String vip_id;
-        private boolean is_black_list;
+        private int is_black_list;
         private int paypal_limit;
 
         public int getId() {
@@ -206,11 +206,11 @@ public class UserInfoBean {
             this.vip_id = vip_id;
         }
 
-        public boolean isIs_black_list() {
+        public int isIs_black_list() {
             return is_black_list;
         }
 
-        public void setIs_black_list(boolean is_black_list) {
+        public void setIs_black_list(int is_black_list) {
             this.is_black_list = is_black_list;
         }
 
