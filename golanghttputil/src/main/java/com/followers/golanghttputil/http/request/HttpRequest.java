@@ -241,4 +241,40 @@ public class HttpRequest extends ObjectLoader {
     }
 
 
+    /**
+     * 获取广告奖励
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getReward(Map<String,Object> map){
+
+        return observable(httpService.getReward(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 解锁模块消费金币
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> Consume(Map<String,Object> map){
+
+        return observable(httpService.Consume(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
 }

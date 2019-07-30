@@ -4,12 +4,14 @@ package com.followers.golanghttputil.http;
 import com.followers.golanghttputil.bean.BuyCoinsBean;
 import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
+import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.IsRateBean;
 import com.followers.golanghttputil.bean.OrderCoinsBean;
 import com.followers.golanghttputil.bean.OrderServiceBean;
 import com.followers.golanghttputil.bean.PayCallBackBean;
 import com.followers.golanghttputil.bean.PayType;
 import com.followers.golanghttputil.bean.RateAddCoinsBean;
+import com.followers.golanghttputil.bean.RewardBean;
 import com.followers.golanghttputil.bean.ServiceBean;
 import com.followers.golanghttputil.bean.ServiceType;
 import com.followers.golanghttputil.bean.UserInfoBean;
@@ -382,6 +384,7 @@ public class HttpUtil {
     }
 
 
+    //获取用户信息
     public static void getUserInfo(String user_pk,final HttpListener<UserInfoBean> listener) {
         Map<String, Object> map = new HashMap<>();
         map.put("user_pk",user_pk);
@@ -395,6 +398,73 @@ public class HttpUtil {
                 if(null != userInfoBean){
 
                     listener.onSuccess(userInfoBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+    //获取广告奖励
+    public static void getReward(String user_pk,String start_time,String end_time,final HttpListener<Integer> listener) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk",user_pk);
+        map.put("start_time",start_time);
+        map.put("end_time",end_time);
+        Observable observable = new HttpRequest().getReward(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                RewardBean rewardBean = GsonUtil.format(s,RewardBean.class);
+
+                if(null != rewardBean){
+
+                    listener.onSuccess(rewardBean.getData());
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+    //消耗金币 解锁模块
+    public static void Consume(String user_pk,String coins,final HttpListener<Integer> listener) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk",user_pk);
+        map.put("currency",coins);
+        Observable observable = new HttpRequest().Consume(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                ConsumeBean consumeBean = GsonUtil.format(s,ConsumeBean.class);
+
+                if(null != consumeBean){
+
+                    if(consumeBean.isStatus()){
+
+                        listener.onSuccess(1);
+                    }
+
+                    if(consumeBean.getMessage().equals("Insufficient balance")){
+
+                        listener.onSuccess(0);
+                    }
                 }
 
             }

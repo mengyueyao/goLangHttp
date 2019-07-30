@@ -62,6 +62,14 @@ public interface HttpService {
      @POST("userinfo")
      Observable<JsonElement> getUserInfo(@Body Map<String,Object> map);
 
+     //获取广告奖励
+     @POST("/ad/query_reward_coins")
+     Observable<JsonElement> getReward(@Body Map<String,Object> map);
+
+
+     //解锁模块消费的金币
+     @POST("/coins/consume_coin")
+     Observable<JsonElement> Consume(@Body Map<String,Object> map);
 
 
 }
