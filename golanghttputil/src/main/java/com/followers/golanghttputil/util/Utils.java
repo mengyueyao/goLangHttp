@@ -6,6 +6,8 @@ public class Utils {
 
     private static  Context mContext;
 
+    private static boolean debug;
+
     public static Context getContext() {
         return mContext;
     }
@@ -13,5 +15,13 @@ public class Utils {
     public static void setContext(Context context) {
 
         mContext = context;
+    }
+
+    public static boolean isDebug() {
+        return debug;
+    }
+
+    public static void setDebug(boolean debug) {
+        Utils.debug = debug;
     }
 }

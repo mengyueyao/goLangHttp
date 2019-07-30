@@ -1,6 +1,8 @@
 package com.followers.golanghttputil.http;
 
 
+import android.util.Log;
+
 import com.followers.golanghttputil.util.AppUtil;
 import com.followers.golanghttputil.util.Utils;
 
@@ -127,6 +129,9 @@ public class HttpCommonInterceptor implements Interceptor {
             ResponseBody responseBody = response.peekBody(Long.MAX_VALUE);
             String result = responseBody.string();
             result = Mobile.decrypt(result);
+            if(Utils.isDebug()){
+                Log.e("result",result);
+            }
             Response.Builder newResponse = new Response.Builder()
                     .request(request)
                     .protocol(response.protocol())
