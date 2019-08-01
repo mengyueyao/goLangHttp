@@ -4,6 +4,7 @@ package com.followers.golanghttputil.http;
 import com.followers.golanghttputil.bean.BuyCoinsBean;
 import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
+import com.followers.golanghttputil.bean.ConfigBean;
 import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.IsRateBean;
 import com.followers.golanghttputil.bean.OrderCoinsBean;
@@ -57,7 +58,7 @@ public class HttpUtil {
 
     //获取配置文件
 
-    public static void getConfig(final HttpListener<String> listener) {
+    public static void getConfig(final HttpListener<ConfigBean> listener) {
 
         Map<String, Object> map = new HashMap<>();
 
@@ -67,7 +68,12 @@ public class HttpUtil {
             @Override
             public void success(String s) {
 
-                listener.onSuccess(s);
+                ConfigBean configBean = GsonUtil.format(s,ConfigBean.class);
+
+                if(null != configBean){
+
+                    listener.onSuccess(configBean);
+                }
 
             }
 
