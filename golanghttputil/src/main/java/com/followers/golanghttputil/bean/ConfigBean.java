@@ -7,7 +7,7 @@ public class ConfigBean {
      * code : 200
      * message : OK
      * status : true
-     * data : {"id":4,"package_name":"com.followers.tracker.data","created_at":"2019-08-01T10:10:46+08:00","update_at":"2019-08-01T10:19:57+08:00","platform":"1","title":"FansAnalysis审核模式配置","description":"fansanalysis为正式模式,其它的为审核模式","config_detail":"{\"100\":\"fansanalysis\",\"update\":\"market://details?id=com.frame.followers\",\"logo\": \"\",\"tips\": \"The latest followers app\",\"popup\": false,\"popuptips\":\"Our app cannot be paid using googleplay, please use our latest app and pay with googleplay.\",\"free_coins\":\"50\",\"rate\":\"80\"}"}
+     * data : {"id":4,"package_name":"com.followers.tracker.data","created_at":"2019-08-01T10:10:46+08:00","update_at":"2019-08-01T11:30:49+08:00","platform":"1","title":"","description":"","config_detail":"{\"100\":\"fansanalysis\",\"update\":\"market://details?id=com.frame.followers\",\"logo\": \"\",\"tips\": \"The latest followers app\",\"popup\": false,\"popuptips\":\"Our app cannot be paid using googleplay, please use our latest app and pay with googleplay.\",\"free_coins\":\"50\",\"rate\":\"80\",\"lock\":\"2\",\"ip\":\"\",\"isIp\":false,\"buytips\":\"Get likes and followers quickly\"} ","is_balck_list":true}
      */
 
     private int code;
@@ -52,11 +52,12 @@ public class ConfigBean {
          * id : 4
          * package_name : com.followers.tracker.data
          * created_at : 2019-08-01T10:10:46+08:00
-         * update_at : 2019-08-01T10:19:57+08:00
+         * update_at : 2019-08-01T11:30:49+08:00
          * platform : 1
-         * title : FansAnalysis审核模式配置
-         * description : fansanalysis为正式模式,其它的为审核模式
-         * config_detail : {"100":"fansanalysis","update":"market://details?id=com.frame.followers","logo": "","tips": "The latest followers app","popup": false,"popuptips":"Our app cannot be paid using googleplay, please use our latest app and pay with googleplay.","free_coins":"50","rate":"80"}
+         * title :
+         * description :
+         * config_detail : {"100":"fansanalysis","update":"market://details?id=com.frame.followers","logo": "","tips": "The latest followers app","popup": false,"popuptips":"Our app cannot be paid using googleplay, please use our latest app and pay with googleplay.","free_coins":"50","rate":"80","lock":"2","ip":"","isIp":false,"buytips":"Get likes and followers quickly"}
+         * is_balck_list : true
          */
 
         private int id;
@@ -67,6 +68,7 @@ public class ConfigBean {
         private String title;
         private String description;
         private String config_detail;
+        private boolean is_balck_list;
 
         public int getId() {
             return id;
@@ -130,6 +132,14 @@ public class ConfigBean {
 
         public void setConfig_detail(String config_detail) {
             this.config_detail = config_detail;
+        }
+
+        public boolean isIs_balck_list() {
+            return is_balck_list;
+        }
+
+        public void setIs_balck_list(boolean is_balck_list) {
+            this.is_balck_list = is_balck_list;
         }
     }
 }
