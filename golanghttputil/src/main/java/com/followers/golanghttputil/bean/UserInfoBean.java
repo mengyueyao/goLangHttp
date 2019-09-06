@@ -7,7 +7,7 @@ public class UserInfoBean {
      * code : 200
      * message : OK
      * status : true
-     * data : {"id":2,"package_name":"insta.likes.followers.photo.golangapidemo","created_at":"2019-07-25T16:18:10.672916963+08:00","update_at":"2019-07-25T16:18:10.67291723+08:00","platform":"1","user_pk":"12345678","user_name":"meng","cover":"http://www.baidu.com","coin_balance":50,"total_amount_coin":0,"total_amount_price":0,"total_consumption_coin":0,"total_ad_coin":0,"vip_expire_time":"0001-01-01T00:00:00Z","vip_id":"","is_black_list":false,"paypal_limit":600}
+     * data : {"id":5356,"package_name":"com.followers.tracker.data","created_at":"2019-09-05T14:26:27+08:00","update_at":"2019-09-05T14:26:27+08:00","platform":"1","user_pk":"6060192636","user_name":"mengyueyaovip","cover":"http://www.baidu.com","coin_balance":1155,"total_amount_coin":900,"total_amount_price":14.969999,"total_consumption_coin":0,"total_ad_coin":0,"vip_expire_time":"2019-09-13T17:36:21+08:00","vip_id":"","is_black_list":0,"paypal_limit":600,"sub_follower_count":"200","is_subscription":true}
      */
 
     private int code;
@@ -49,23 +49,25 @@ public class UserInfoBean {
 
     public static class DataBean {
         /**
-         * id : 2
-         * package_name : insta.likes.followers.photo.golangapidemo
-         * created_at : 2019-07-25T16:18:10.672916963+08:00
-         * update_at : 2019-07-25T16:18:10.67291723+08:00
+         * id : 5356
+         * package_name : com.followers.tracker.data
+         * created_at : 2019-09-05T14:26:27+08:00
+         * update_at : 2019-09-05T14:26:27+08:00
          * platform : 1
-         * user_pk : 12345678
-         * user_name : meng
+         * user_pk : 6060192636
+         * user_name : mengyueyaovip
          * cover : http://www.baidu.com
-         * coin_balance : 50
-         * total_amount_coin : 0
-         * total_amount_price : 0
+         * coin_balance : 1155
+         * total_amount_coin : 900
+         * total_amount_price : 14.969999
          * total_consumption_coin : 0
          * total_ad_coin : 0
-         * vip_expire_time : 0001-01-01T00:00:00Z
+         * vip_expire_time : 2019-09-13T17:36:21+08:00
          * vip_id :
-         * is_black_list : false
+         * is_black_list : 0
          * paypal_limit : 600
+         * sub_follower_count : 200
+         * is_subscription : true
          */
 
         private int id;
@@ -85,6 +87,8 @@ public class UserInfoBean {
         private String vip_id;
         private int is_black_list;
         private int paypal_limit;
+        private String sub_follower_count;
+        private boolean is_subscription;
 
         public int getId() {
             return id;
@@ -206,7 +210,7 @@ public class UserInfoBean {
             this.vip_id = vip_id;
         }
 
-        public int isIs_black_list() {
+        public int getIs_black_list() {
             return is_black_list;
         }
 
@@ -220,6 +224,22 @@ public class UserInfoBean {
 
         public void setPaypal_limit(int paypal_limit) {
             this.paypal_limit = paypal_limit;
+        }
+
+        public String getSub_follower_count() {
+            return sub_follower_count;
+        }
+
+        public void setSub_follower_count(String sub_follower_count) {
+            this.sub_follower_count = sub_follower_count;
+        }
+
+        public boolean isIs_subscription() {
+            return is_subscription;
+        }
+
+        public void setIs_subscription(boolean is_subscription) {
+            this.is_subscription = is_subscription;
         }
     }
 }
