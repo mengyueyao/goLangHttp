@@ -7,6 +7,7 @@ import com.followers.golanghttputil.bean.CoinsBean;
 import com.followers.golanghttputil.bean.ConfigBean;
 import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.IsRateBean;
+import com.followers.golanghttputil.bean.LotteryBuyBean;
 import com.followers.golanghttputil.bean.OrderCoinsBean;
 import com.followers.golanghttputil.bean.OrderServiceBean;
 import com.followers.golanghttputil.bean.PayCallBackBean;
@@ -586,6 +587,70 @@ public class HttpUtil {
         }.post(observable);
 
     }
+
+
+
+    //活动支付成功回调
+    public static void googleCallback(String user_pk,String token, String google_pay_id,final HttpListener<LotteryBuyBean> listener) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk", user_pk);
+        map.put("google_pay_id",google_pay_id);
+        map.put("token", token);
+        Observable observable = new HttpRequest().google_successful(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                LotteryBuyBean lotteryBuyBean = GsonUtil.format(s,LotteryBuyBean.class);
+
+                if(null != lotteryBuyBean){
+
+                    listener.onSuccess(lotteryBuyBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+
+    //paypal购买活动商品
+    public static void lotteryBuy(String product_id,String user_pk,final HttpListener<LotteryBuyBean> listener) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("product_id", product_id);
+        map.put("user_pk",user_pk);
+        map.put("pay_type", "1");
+        Observable observable = new HttpRequest().lotteryBuy(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                LotteryBuyBean lotteryBuyBean = GsonUtil.format(s,LotteryBuyBean.class);
+
+                if(null != lotteryBuyBean){
+
+                    listener.onSuccess(lotteryBuyBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
 
 }
 

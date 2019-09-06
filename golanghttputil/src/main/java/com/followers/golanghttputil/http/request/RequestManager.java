@@ -1,5 +1,8 @@
 package com.followers.golanghttputil.http.request;
 
+import android.util.Log;
+
+import com.followers.golanghttputil.util.Utils;
 import com.google.gson.JsonElement;
 
 import okhttp3.ResponseBody;
@@ -35,6 +38,11 @@ public abstract class RequestManager  {
                         int code = ((HttpException) throwable).code();
 
                         throwable.printStackTrace();
+
+                        if(Utils.isDebug()){
+
+                            Log.e("error","code:"+code+",msg:"+responseBody.string());
+                        }
 
                         failure("code:"+code+",msg:"+responseBody.string());
 

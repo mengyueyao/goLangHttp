@@ -331,4 +331,40 @@ public class HttpRequest extends ObjectLoader {
     }
 
 
+    /**
+     * paypal购买活动商品
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> lotteryBuy(Map<String,Object> map){
+
+        return observable(httpService.lotteryBuy(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * google购买活动商品
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> google_successful(Map<String,Object> map){
+
+        return observable(httpService.google_successful(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
 }
