@@ -11,11 +11,14 @@ import com.followers.golanghttputil.bean.OrderCoinsBean;
 import com.followers.golanghttputil.bean.OrderServiceBean;
 import com.followers.golanghttputil.bean.PayCallBackBean;
 import com.followers.golanghttputil.bean.PayType;
+import com.followers.golanghttputil.bean.ProductBean;
 import com.followers.golanghttputil.bean.RateAddCoinsBean;
 import com.followers.golanghttputil.bean.RewardBean;
 import com.followers.golanghttputil.bean.ServiceBean;
 import com.followers.golanghttputil.bean.ServiceType;
+import com.followers.golanghttputil.bean.SubVipBean;
 import com.followers.golanghttputil.bean.UserInfoBean;
+import com.followers.golanghttputil.bean.VipBean;
 import com.followers.golanghttputil.http.request.HttpRequest;
 import com.followers.golanghttputil.http.request.RequestManager;
 import com.followers.golanghttputil.util.GsonUtil;
@@ -486,6 +489,103 @@ public class HttpUtil {
 
 
 
+    //获取活动商品
+
+    public  static void getProduct(final HttpListener<ProductBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        Observable observable = new HttpRequest().getProduct(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                ProductBean bean = GsonUtil.format(s,ProductBean.class);
+
+                if(null != bean){
+
+                    listener.onSuccess(bean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取订阅商品列表
+
+    public  static void getSubscriptionList(final HttpListener<VipBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        Observable observable = new HttpRequest().getSubscriptionList(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                VipBean vipBean = GsonUtil.format(s,VipBean.class);
+
+                if(null != vipBean){
+
+                    listener.onSuccess(vipBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //添加订阅
+
+    public  static void createPaypalSubscriber(String plan_id,String user_pk,String user_name,final HttpListener<SubVipBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("plan_id",plan_id);
+
+        map.put("user_pk",user_pk);
+
+        map.put("user_name",user_name);
+
+        Observable observable = new HttpRequest().createPaypalSubscriber(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
 
 }
 

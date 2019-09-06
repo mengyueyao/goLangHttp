@@ -277,4 +277,58 @@ public class HttpRequest extends ObjectLoader {
     }
 
 
+    /**
+     * 获取活动商品
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getProduct(Map<String,Object> map){
+
+        return observable(httpService.getProduct(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 获取订阅商品列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getSubscriptionList(Map<String,Object> map){
+
+        return observable(httpService.getSubscriptionList(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 创建paypal订阅
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> createPaypalSubscriber(Map<String,Object> map){
+
+        return observable(httpService.createPaypalSubscriber(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+
 }

@@ -71,5 +71,20 @@ public interface HttpService {
      @POST("/coins/consume_coin")
      Observable<JsonElement> Consume(@Body Map<String,Object> map);
 
+     //活动商品
+    @POST("lottery/get_product")
+    Observable<JsonElement> getProduct(@Body Map<String,Object> map);
+
+
+     //获取订阅商品列表
+     @POST("service/get_subscription_list")
+     Observable<JsonElement> getSubscriptionList(@Body Map<String,Object> map);
+
+
+     //paypal订阅
+     @POST("service/create_paypal_subscriber")
+     Observable<JsonElement> createPaypalSubscriber(@Body Map<String,Object> map);
+
+
 
 }
