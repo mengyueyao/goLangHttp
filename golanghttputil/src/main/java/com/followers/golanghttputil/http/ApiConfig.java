@@ -7,8 +7,8 @@ package com.followers.golanghttputil.http;
 public class ApiConfig {
 
     //该地址一定要以/结束，否则会发生错误
-   //  public static  final String baseUrl = "https://api.dibage.top/";//服务器地址
+     public static  final String baseUrl = "https://api.dibage.top/";//服务器地址
 
 
-    public static  final String baseUrl = "http://192.168.0.102:8080/";//服务器地址
+   // public static  final String baseUrl = "http://192.168.0.102:8080/";//服务器地址
 }
