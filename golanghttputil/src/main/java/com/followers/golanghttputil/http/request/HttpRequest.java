@@ -367,4 +367,21 @@ public class HttpRequest extends ObjectLoader {
     }
 
 
+
+    /**
+     * 创建google订阅
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> createSubscriber(Map<String,Object> map){
+
+        return observable(httpService.createSubscriber(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
 }

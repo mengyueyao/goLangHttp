@@ -9,7 +9,7 @@ public class VipBean {
      * code : 200
      * message : OK
      * status : true
-     * data : [{"id":4,"package_name":"com.followers.tracker.data","created_at":"2019-08-24T16:01:24+08:00","update_at":"2019-08-24T16:01:24+08:00","platform":"1","name":"650 Followers/Day","plan_id":"P-1ST29750WW244830UYKSLUCA","frequency_interval":"7","price":"49.99","followers_count":"650","followers_service_id":"409","enable":"1","provider_service_id":1,"provider_service_name":"smmlite"},{"id":5,"package_name":"com.followers.tracker.data","created_at":"2019-08-24T16:01:52+08:00","update_at":"2019-08-24T16:01:52+08:00","platform":"1","name":"1400 Followers/Day","plan_id":"P-2K870504PG281974DYKSSRFQ","frequency_interval":"7","price":"99.99","followers_count":"1400","followers_service_id":"409","enable":"1","provider_service_id":1,"provider_service_name":"smmlite"}]
+     * data : [{"id":7,"package_name":"com.followers.tracker.data","created_at":"2019-09-12T20:58:00+08:00","update_at":"2019-09-12T20:58:00+08:00","platform":"1","name":"200followers/day","google_sku_id":"com.data1","frequency_interval":"7","price":"11.99","price_per_day":"2.99","followers_count":"20","followers_service_id":"100001","enable":"1","provider_service_id":1,"provider_service_name":"smmlite"}]
      */
 
     private int code;
@@ -51,17 +51,18 @@ public class VipBean {
 
     public static class DataBean {
         /**
-         * id : 4
+         * id : 7
          * package_name : com.followers.tracker.data
-         * created_at : 2019-08-24T16:01:24+08:00
-         * update_at : 2019-08-24T16:01:24+08:00
+         * created_at : 2019-09-12T20:58:00+08:00
+         * update_at : 2019-09-12T20:58:00+08:00
          * platform : 1
-         * name : 650 Followers/Day
-         * plan_id : P-1ST29750WW244830UYKSLUCA
+         * name : 200followers/day
+         * google_sku_id : com.data1
          * frequency_interval : 7
-         * price : 49.99
-         * followers_count : 650
-         * followers_service_id : 409
+         * price : 11.99
+         * price_per_day : 2.99
+         * followers_count : 20
+         * followers_service_id : 100001
          * enable : 1
          * provider_service_id : 1
          * provider_service_name : smmlite
@@ -73,23 +74,15 @@ public class VipBean {
         private String update_at;
         private String platform;
         private String name;
-        private String plan_id;
+        private String google_sku_id;
         private String frequency_interval;
         private String price;
+        private String price_per_day;
         private String followers_count;
         private String followers_service_id;
         private String enable;
         private int provider_service_id;
         private String provider_service_name;
-        private String price_per_day;
-
-        public String getPrice_per_day() {
-            return price_per_day;
-        }
-
-        public void setPrice_per_day(String price_per_day) {
-            this.price_per_day = price_per_day;
-        }
 
         public int getId() {
             return id;
@@ -139,12 +132,12 @@ public class VipBean {
             this.name = name;
         }
 
-        public String getPlan_id() {
-            return plan_id;
+        public String getGoogle_sku_id() {
+            return google_sku_id;
         }
 
-        public void setPlan_id(String plan_id) {
-            this.plan_id = plan_id;
+        public void setGoogle_sku_id(String google_sku_id) {
+            this.google_sku_id = google_sku_id;
         }
 
         public String getFrequency_interval() {
@@ -161,6 +154,14 @@ public class VipBean {
 
         public void setPrice(String price) {
             this.price = price;
+        }
+
+        public String getPrice_per_day() {
+            return price_per_day;
+        }
+
+        public void setPrice_per_day(String price_per_day) {
+            this.price_per_day = price_per_day;
         }
 
         public String getFollowers_count() {

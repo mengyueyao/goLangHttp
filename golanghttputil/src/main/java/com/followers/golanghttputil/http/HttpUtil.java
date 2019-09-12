@@ -652,5 +652,45 @@ public class HttpUtil {
     }
 
 
+    //添加订阅
+
+    public  static void createSubscriber(String token,String user_pk,String google_pay_id,String is_upgrade,final HttpListener<SubVipBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("token",token);
+
+        map.put("google_pay_id",google_pay_id);
+
+        map.put("is_upgrade",is_upgrade);
+
+        Observable observable = new HttpRequest().createSubscriber(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+
 }
 

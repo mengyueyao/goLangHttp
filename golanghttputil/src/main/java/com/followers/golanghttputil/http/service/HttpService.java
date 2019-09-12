@@ -81,7 +81,7 @@ public interface HttpService {
      Observable<JsonElement> getSubscriptionList(@Body Map<String,Object> map);
 
 
-     //paypal订阅
+     //paypal订阅   弃用
      @POST("service/create_paypal_subscriber")
      Observable<JsonElement> createPaypalSubscriber(@Body Map<String,Object> map);
 
@@ -97,6 +97,9 @@ public interface HttpService {
 
 
 
+    //google订阅
+    @POST("/service/create_subscriber")
+    Observable<JsonElement> createSubscriber(@Body Map<String,Object> map);
 
 
 }
