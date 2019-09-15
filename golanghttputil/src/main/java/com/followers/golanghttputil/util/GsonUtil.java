@@ -17,7 +17,7 @@ public class GsonUtil {
 
         }catch (Exception e){
 
-            Log.e("error","数据解析异常");
+            Log.e("error","数据解析异常:"+e.toString());
 
             return null;
         }
