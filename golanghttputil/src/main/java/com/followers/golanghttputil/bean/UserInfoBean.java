@@ -91,6 +91,10 @@ public class UserInfoBean {
         private boolean is_subscription;
 
 
+
+
+
+
         public String getCoin_balance() {
             return coin_balance;
         }
