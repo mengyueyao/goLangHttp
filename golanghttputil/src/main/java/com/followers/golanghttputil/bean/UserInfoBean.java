@@ -78,17 +78,58 @@ public class UserInfoBean {
         private String user_pk;
         private String user_name;
         private String cover;
-        private int coin_balance;
-        private int total_amount_coin;
-        private int total_amount_price;
-        private int total_consumption_coin;
-        private int total_ad_coin;
+        private String coin_balance;
+        private String total_amount_coin;
+        private String total_amount_price;
+        private String total_consumption_coin;
+        private String total_ad_coin;
         private String vip_expire_time;
         private String vip_id;
         private int is_black_list;
         private int paypal_limit;
         private String sub_follower_count;
         private boolean is_subscription;
+
+
+        public String getCoin_balance() {
+            return coin_balance;
+        }
+
+        public void setCoin_balance(String coin_balance) {
+            this.coin_balance = coin_balance;
+        }
+
+        public String getTotal_amount_coin() {
+            return total_amount_coin;
+        }
+
+        public void setTotal_amount_coin(String total_amount_coin) {
+            this.total_amount_coin = total_amount_coin;
+        }
+
+        public String getTotal_amount_price() {
+            return total_amount_price;
+        }
+
+        public void setTotal_amount_price(String total_amount_price) {
+            this.total_amount_price = total_amount_price;
+        }
+
+        public String getTotal_consumption_coin() {
+            return total_consumption_coin;
+        }
+
+        public void setTotal_consumption_coin(String total_consumption_coin) {
+            this.total_consumption_coin = total_consumption_coin;
+        }
+
+        public String getTotal_ad_coin() {
+            return total_ad_coin;
+        }
+
+        public void setTotal_ad_coin(String total_ad_coin) {
+            this.total_ad_coin = total_ad_coin;
+        }
 
         public int getId() {
             return id;
@@ -154,45 +195,6 @@ public class UserInfoBean {
             this.cover = cover;
         }
 
-        public int getCoin_balance() {
-            return coin_balance;
-        }
-
-        public void setCoin_balance(int coin_balance) {
-            this.coin_balance = coin_balance;
-        }
-
-        public int getTotal_amount_coin() {
-            return total_amount_coin;
-        }
-
-        public void setTotal_amount_coin(int total_amount_coin) {
-            this.total_amount_coin = total_amount_coin;
-        }
-
-        public int getTotal_amount_price() {
-            return total_amount_price;
-        }
-
-        public void setTotal_amount_price(int total_amount_price) {
-            this.total_amount_price = total_amount_price;
-        }
-
-        public int getTotal_consumption_coin() {
-            return total_consumption_coin;
-        }
-
-        public void setTotal_consumption_coin(int total_consumption_coin) {
-            this.total_consumption_coin = total_consumption_coin;
-        }
-
-        public int getTotal_ad_coin() {
-            return total_ad_coin;
-        }
-
-        public void setTotal_ad_coin(int total_ad_coin) {
-            this.total_ad_coin = total_ad_coin;
-        }
 
         public String getVip_expire_time() {
             return vip_expire_time;
