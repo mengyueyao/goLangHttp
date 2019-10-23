@@ -7,7 +7,7 @@ public class UserInfoBean {
      * code : 200
      * message : OK
      * status : true
-     * data : {"id":5358,"package_name":"com.followers.tracker.data","created_at":"2019-09-12T20:52:23+08:00","update_at":"2019-09-12T20:52:23+08:00","platform":"1","user_pk":"6060192636","user_name":"mengyueyaovip","cover":"http://www.baidu.com","coin_balance":50,"total_amount_coin":0,"total_amount_price":0,"total_consumption_coin":0,"total_ad_coin":0,"vip_expire_time":"0001-01-01T00:00:00Z","vip_id":"","is_black_list":0,"paypal_limit":600,"sub_follower_count":"","is_subscription":false}
+     * data : {"id":148951,"package_name":"com.pop.tags","created_at":"2019-10-23T14:55:33+08:00","update_at":"2019-10-23T14:55:33+08:00","platform":"1","user_pk":"24","user_name":"tom","cover":"https://scontent-sin6-2.cdninstagram.com/vp/f64617d77d85d74e09f7bfb5f62685cb/5E4D02C0/t51.2885-19/10831780_819050511467036_1842884027_a.jpg?_nc_ht=scontent-sin6-2.cdninstagram.com","coin_balance":60,"total_amount_coin":0,"total_amount_price":0,"total_consumption_coin":0,"total_ad_coin":0,"vip_expire_time":"0001-01-01T00:00:00Z","vip_id":"","is_black_list":0,"paypal_limit":600,"sub_follower_count":"","is_subscription":false,"country":"中国","likes_vip_expire_time":"0001-01-01T00:00:00Z","is_likes_subscription":false,"likes_vip_id":""}
      */
 
     private int code;
@@ -49,15 +49,15 @@ public class UserInfoBean {
 
     public static class DataBean {
         /**
-         * id : 5358
-         * package_name : com.followers.tracker.data
-         * created_at : 2019-09-12T20:52:23+08:00
-         * update_at : 2019-09-12T20:52:23+08:00
+         * id : 148951
+         * package_name : com.pop.tags
+         * created_at : 2019-10-23T14:55:33+08:00
+         * update_at : 2019-10-23T14:55:33+08:00
          * platform : 1
-         * user_pk : 6060192636
-         * user_name : mengyueyaovip
-         * cover : http://www.baidu.com
-         * coin_balance : 50
+         * user_pk : 24
+         * user_name : tom
+         * cover : https://scontent-sin6-2.cdninstagram.com/vp/f64617d77d85d74e09f7bfb5f62685cb/5E4D02C0/t51.2885-19/10831780_819050511467036_1842884027_a.jpg?_nc_ht=scontent-sin6-2.cdninstagram.com
+         * coin_balance : 60
          * total_amount_coin : 0
          * total_amount_price : 0
          * total_consumption_coin : 0
@@ -68,6 +68,10 @@ public class UserInfoBean {
          * paypal_limit : 600
          * sub_follower_count :
          * is_subscription : false
+         * country : 中国
+         * likes_vip_expire_time : 0001-01-01T00:00:00Z
+         * is_likes_subscription : false
+         * likes_vip_id :
          */
 
         private int id;
@@ -78,62 +82,21 @@ public class UserInfoBean {
         private String user_pk;
         private String user_name;
         private String cover;
-        private String coin_balance;
-        private String total_amount_coin;
-        private String total_amount_price;
-        private String total_consumption_coin;
-        private String total_ad_coin;
+        private int coin_balance;
+        private int total_amount_coin;
+        private int total_amount_price;
+        private int total_consumption_coin;
+        private int total_ad_coin;
         private String vip_expire_time;
         private String vip_id;
         private int is_black_list;
         private int paypal_limit;
         private String sub_follower_count;
         private boolean is_subscription;
-
-
-
-
-
-
-        public String getCoin_balance() {
-            return coin_balance;
-        }
-
-        public void setCoin_balance(String coin_balance) {
-            this.coin_balance = coin_balance;
-        }
-
-        public String getTotal_amount_coin() {
-            return total_amount_coin;
-        }
-
-        public void setTotal_amount_coin(String total_amount_coin) {
-            this.total_amount_coin = total_amount_coin;
-        }
-
-        public String getTotal_amount_price() {
-            return total_amount_price;
-        }
-
-        public void setTotal_amount_price(String total_amount_price) {
-            this.total_amount_price = total_amount_price;
-        }
-
-        public String getTotal_consumption_coin() {
-            return total_consumption_coin;
-        }
-
-        public void setTotal_consumption_coin(String total_consumption_coin) {
-            this.total_consumption_coin = total_consumption_coin;
-        }
-
-        public String getTotal_ad_coin() {
-            return total_ad_coin;
-        }
-
-        public void setTotal_ad_coin(String total_ad_coin) {
-            this.total_ad_coin = total_ad_coin;
-        }
+        private String country;
+        private String likes_vip_expire_time;
+        private boolean is_likes_subscription;
+        private String likes_vip_id;
 
         public int getId() {
             return id;
@@ -199,6 +162,45 @@ public class UserInfoBean {
             this.cover = cover;
         }
 
+        public int getCoin_balance() {
+            return coin_balance;
+        }
+
+        public void setCoin_balance(int coin_balance) {
+            this.coin_balance = coin_balance;
+        }
+
+        public int getTotal_amount_coin() {
+            return total_amount_coin;
+        }
+
+        public void setTotal_amount_coin(int total_amount_coin) {
+            this.total_amount_coin = total_amount_coin;
+        }
+
+        public int getTotal_amount_price() {
+            return total_amount_price;
+        }
+
+        public void setTotal_amount_price(int total_amount_price) {
+            this.total_amount_price = total_amount_price;
+        }
+
+        public int getTotal_consumption_coin() {
+            return total_consumption_coin;
+        }
+
+        public void setTotal_consumption_coin(int total_consumption_coin) {
+            this.total_consumption_coin = total_consumption_coin;
+        }
+
+        public int getTotal_ad_coin() {
+            return total_ad_coin;
+        }
+
+        public void setTotal_ad_coin(int total_ad_coin) {
+            this.total_ad_coin = total_ad_coin;
+        }
 
         public String getVip_expire_time() {
             return vip_expire_time;
@@ -246,6 +248,38 @@ public class UserInfoBean {
 
         public void setIs_subscription(boolean is_subscription) {
             this.is_subscription = is_subscription;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public String getLikes_vip_expire_time() {
+            return likes_vip_expire_time;
+        }
+
+        public void setLikes_vip_expire_time(String likes_vip_expire_time) {
+            this.likes_vip_expire_time = likes_vip_expire_time;
+        }
+
+        public boolean isIs_likes_subscription() {
+            return is_likes_subscription;
+        }
+
+        public void setIs_likes_subscription(boolean is_likes_subscription) {
+            this.is_likes_subscription = is_likes_subscription;
+        }
+
+        public String getLikes_vip_id() {
+            return likes_vip_id;
+        }
+
+        public void setLikes_vip_id(String likes_vip_id) {
+            this.likes_vip_id = likes_vip_id;
         }
     }
 }
