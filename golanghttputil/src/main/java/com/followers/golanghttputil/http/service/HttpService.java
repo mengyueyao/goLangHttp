@@ -106,4 +106,9 @@ public interface HttpService {
     @POST("parse")
     Observable<JsonElement> parse(@Body Map<String,Object> map);
 
+
+    //点赞粉丝
+    @POST("service/create_likes_subscriber")
+    Observable<JsonElement> createLikesSubscriber(@Body Map<String,Object> map);
+
 }

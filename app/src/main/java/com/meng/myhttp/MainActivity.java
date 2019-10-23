@@ -3,8 +3,11 @@ package com.meng.myhttp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.followers.golanghttputil.bean.SubscriptType;
+import com.followers.golanghttputil.bean.VipBean;
+import com.followers.golanghttputil.http.HttpListener;
+import com.followers.golanghttputil.http.HttpUtil;
 import com.followers.golanghttputil.util.Utils;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,8 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         Utils.setDebug(true);
 
-    }
+        HttpUtil.getSubscriptionList(SubscriptType.followers, new HttpListener<VipBean>() {
+            @Override
+            public void onSuccess(VipBean bean) {
 
+
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+
+    }
 
 
 }

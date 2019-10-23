@@ -10,5 +10,5 @@ public class ApiConfig {
      public static  final String baseUrl = "https://api.dibage.top/";//服务器地址
 
 
-  //  public static  final String baseUrl = "https://862f35fb.ngrok.io/";//服务器地址
+  //  public static  final String baseUrl = "https://6f98dcd8.ngrok.io/";//服务器地址
 }

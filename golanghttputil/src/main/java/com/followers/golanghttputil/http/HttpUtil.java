@@ -19,6 +19,7 @@ import com.followers.golanghttputil.bean.RewardBean;
 import com.followers.golanghttputil.bean.ServiceBean;
 import com.followers.golanghttputil.bean.ServiceType;
 import com.followers.golanghttputil.bean.SubVipBean;
+import com.followers.golanghttputil.bean.SubscriptType;
 import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.bean.VipBean;
 import com.followers.golanghttputil.http.request.HttpRequest;
@@ -524,9 +525,11 @@ public class HttpUtil {
 
     //获取订阅商品列表
 
-    public  static void getSubscriptionList(final HttpListener<VipBean> listener){
+    public  static void getSubscriptionList(SubscriptType SubscriptType,final HttpListener<VipBean> listener){
 
         Map<String,Object> map = new HashMap<>();
+
+        map.put("type",SubscriptType.getValue());
 
         Observable observable = new HttpRequest().getSubscriptionList(map);
 
@@ -655,7 +658,7 @@ public class HttpUtil {
 
     //添加订阅
 
-    public  static void createSubscriber(String token,String user_pk,String google_pay_id,String is_upgrade,final HttpListener<SubVipBean> listener){
+    public  static void createFollowersSubscriber(String token,String user_pk,String google_pay_id,String is_upgrade,final HttpListener<SubVipBean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
@@ -727,6 +730,45 @@ public class HttpUtil {
 
     }
 
+
+
+    //添加订阅
+
+    public  static void createLikesSubscriber(String token,String user_pk,String google_pay_id,String is_upgrade,final HttpListener<SubVipBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("token",token);
+
+        map.put("google_pay_id",google_pay_id);
+
+        map.put("is_upgrade",is_upgrade);
+
+        Observable observable = new HttpRequest().createSubscriber(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
 
 }
 
