@@ -84,7 +84,7 @@ public class UserInfoBean {
         private String cover;
         private int coin_balance;
         private int total_amount_coin;
-        private int total_amount_price;
+        private String total_amount_price;
         private int total_consumption_coin;
         private int total_ad_coin;
         private String vip_expire_time;
@@ -178,11 +178,11 @@ public class UserInfoBean {
             this.total_amount_coin = total_amount_coin;
         }
 
-        public int getTotal_amount_price() {
+        public String getTotal_amount_price() {
             return total_amount_price;
         }
 
-        public void setTotal_amount_price(int total_amount_price) {
+        public void setTotal_amount_price(String total_amount_price) {
             this.total_amount_price = total_amount_price;
         }
 
