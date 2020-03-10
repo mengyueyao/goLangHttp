@@ -107,8 +107,42 @@ public interface HttpService {
     Observable<JsonElement> parse(@Body Map<String,Object> map);
 
 
-    //点赞粉丝
+    //点赞VIP
     @POST("service/create_likes_subscriber")
     Observable<JsonElement> createLikesSubscriber(@Body Map<String,Object> map);
+
+    //添加自定义标签分类
+    @POST("hashtag/add_custom_category")
+    Observable<JsonElement> addCustomCategory(@Body Map<String,Object> map);
+
+    //修改自定义标签分类
+    @POST("hashtag/edit_custom_category")
+    Observable<JsonElement> editCustomCategory(@Body Map<String,Object> map);
+
+    //删除自定义标签分类
+    @POST("hashtag/del_custom_category")
+    Observable<JsonElement> delCustomCategory(@Body Map<String,Object> map);
+
+    //获取自定义标签分类列表
+    @POST("hashtag/get_custom_category")
+    Observable<JsonElement> getCustomCategory(@Body Map<String,Object> map);
+
+    //添加自定义标签详情
+    @POST("hashtag/add_custom_detail")
+    Observable<JsonElement> addCustomDetail(@Body Map<String,Object> map);
+
+    //编辑自定义标签详情
+    @POST("hashtag/edit_custom_detail")
+    Observable<JsonElement> editCustomDetail(@Body Map<String,Object> map);
+
+    //删除自定义标签详情
+    @POST("hashtag/del_custom_detail")
+    Observable<JsonElement> delCustomDetail(@Body Map<String,Object> map);
+
+    //获取自定义标签详情
+    @POST("hashtag/get_custom_detail")
+    Observable<JsonElement> getCustomDetail(@Body Map<String,Object> map);
+
+
 
 }

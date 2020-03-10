@@ -419,4 +419,134 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 添加自定义分类
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> addCustomCategory(Map<String,Object> map){
+
+        return observable(httpService.addCustomCategory(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 修改自定义分类
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> editCustomCategory(Map<String,Object> map){
+
+        return observable(httpService.editCustomCategory(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 删除自定义分类
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> delCustomCategory(Map<String,Object> map){
+
+        return observable(httpService.delCustomCategory(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取自定义分类列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getCustomCategory(Map<String,Object> map){
+
+        return observable(httpService.getCustomCategory(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 添加自定义分类详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> addCustomDetail(Map<String,Object> map){
+
+        return observable(httpService.addCustomDetail(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 删除自定义分类详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> delCustomDetail(Map<String,Object> map){
+
+        return observable(httpService.delCustomDetail(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 修改自定义分类详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> editCustomDetail(Map<String,Object> map){
+
+        return observable(httpService.editCustomDetail(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 查询自定义分类详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getCustomDetail(Map<String,Object> map){
+
+        return observable(httpService.getCustomDetail(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

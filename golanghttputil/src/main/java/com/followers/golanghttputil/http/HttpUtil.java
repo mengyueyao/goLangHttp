@@ -770,5 +770,39 @@ public class HttpUtil {
 
     }
 
+    //添加自定义分类列表
+
+    public  static void addCustomCategory(String title,String user_pk,final HttpListener<String> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("title",title);
+
+        Observable observable = new HttpRequest().addCustomCategory(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(s);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
 }
 
