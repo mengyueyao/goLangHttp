@@ -2,6 +2,7 @@ package com.meng.myhttp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.http.HttpListener;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UserInfoBean bean) {
 
+                Log.e("测试是否能提交到gitub",bean.getCode()+"==");
 
             }
 
