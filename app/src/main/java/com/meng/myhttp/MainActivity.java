@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UserInfoBean bean) {
 
-                Log.e("测试是否能提交到gitub",bean.getCode()+"==");
+                Log.e("测试能否同时提交到github和coding上",bean.getCode()+"==");
 
             }
 
