@@ -957,7 +957,7 @@ public class HttpUtil {
 
     //编辑自定义分类详情
 
-    public  static void editCustomDetail(String detail,String user_pk,String category_id,final HttpListener<String> listener){
+    public  static void editCustomDetail(String detail,String user_pk,String category_id,final HttpListener<Boolean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
@@ -977,7 +977,7 @@ public class HttpUtil {
 
                 if(null != subVipBean){
 
-                    listener.onSuccess(s);
+                    listener.onSuccess(subVipBean.isStatus());
                 }
             }
 
