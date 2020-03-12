@@ -6,6 +6,10 @@ import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
 import com.followers.golanghttputil.bean.ConfigBean;
 import com.followers.golanghttputil.bean.ConsumeBean;
+import com.followers.golanghttputil.bean.CustomCategoryBean;
+import com.followers.golanghttputil.bean.CustomDetailBean;
+import com.followers.golanghttputil.bean.HasTagDetailBean;
+import com.followers.golanghttputil.bean.IndexBean;
 import com.followers.golanghttputil.bean.IsRateBean;
 import com.followers.golanghttputil.bean.LotteryBuyBean;
 import com.followers.golanghttputil.bean.OrderCoinsBean;
@@ -16,10 +20,13 @@ import com.followers.golanghttputil.bean.PayType;
 import com.followers.golanghttputil.bean.ProductBean;
 import com.followers.golanghttputil.bean.RateAddCoinsBean;
 import com.followers.golanghttputil.bean.RewardBean;
+import com.followers.golanghttputil.bean.SearchBean;
 import com.followers.golanghttputil.bean.ServiceBean;
 import com.followers.golanghttputil.bean.ServiceType;
 import com.followers.golanghttputil.bean.SubVipBean;
 import com.followers.golanghttputil.bean.SubscriptType;
+import com.followers.golanghttputil.bean.TagListBean;
+import com.followers.golanghttputil.bean.TagsInfoBean;
 import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.bean.VipBean;
 import com.followers.golanghttputil.http.request.HttpRequest;
@@ -772,7 +779,7 @@ public class HttpUtil {
 
     //添加自定义分类列表
 
-    public  static void addCustomCategory(String title,String user_pk,final HttpListener<String> listener){
+    public  static void addCustomCategory(String title,String user_pk,final HttpListener<Boolean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
@@ -781,6 +788,441 @@ public class HttpUtil {
         map.put("title",title);
 
         Observable observable = new HttpRequest().addCustomCategory(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //修改自定义分类列表
+
+    public  static void editCustomCategory(String title,String user_pk,String id,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("title",title);
+
+        map.put("id",id);
+
+        Observable observable = new HttpRequest().editCustomCategory(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+
+    //删除自定义分类列表
+
+    public  static void delCustomCategory(String id,String user_pk,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("id",id);
+
+        Observable observable = new HttpRequest().delCustomCategory(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取自定义分类列表
+
+    public  static void getCustomCategory(String user_pk,final HttpListener<CustomCategoryBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        Observable observable = new HttpRequest().getCustomCategory(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                CustomCategoryBean customCategoryBean = GsonUtil.format(s,CustomCategoryBean.class);
+
+                if(null != customCategoryBean){
+
+                    listener.onSuccess(customCategoryBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //添加自定义分类详情
+
+    public  static void addCustomDetail(String detail,String user_pk,String category_id,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("detail",detail);
+
+        map.put("category_id",category_id);
+
+        Observable observable = new HttpRequest().addCustomDetail(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //编辑自定义分类详情
+
+    public  static void editCustomDetail(String detail,String user_pk,String category_id,final HttpListener<String> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("detail",detail);
+
+        map.put("category_id",category_id);
+
+        Observable observable = new HttpRequest().editCustomDetail(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(s);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //删除自定义分类详情
+
+    public  static void delCustomDetail(String id,String user_pk,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("id",id);
+
+        Observable observable = new HttpRequest().delCustomDetail(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean){
+
+                    listener.onSuccess(subVipBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //查询自定义分类详情
+
+    public  static void getCustomDetail(String id,final HttpListener<CustomDetailBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("id",id);
+
+        Observable observable = new HttpRequest().getCustomDetail(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                CustomDetailBean customDetailBean = GsonUtil.format(s,CustomDetailBean.class);
+
+                if(null != customDetailBean){
+
+                    listener.onSuccess(customDetailBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取首页标签列表
+    public  static void getIndex(final HttpListener<IndexBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        Observable observable = new HttpRequest().getIndex(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                IndexBean indexBean = GsonUtil.format(s,IndexBean.class);
+
+                if(null != indexBean){
+
+                    listener.onSuccess(indexBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取标签列表
+    public  static void getTagList(String title,final HttpListener<TagListBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("title",title);
+
+        Observable observable = new HttpRequest().getTagList(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                TagListBean tagListBean = GsonUtil.format(s,TagListBean.class);
+
+                if(null != tagListBean){
+
+                    listener.onSuccess(tagListBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取标签详细
+    public  static void getTagInfo(String tag,final HttpListener<TagsInfoBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("tag",tag);
+
+        Observable observable = new HttpRequest().getTagInfo(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                TagsInfoBean tagsInfoBean = GsonUtil.format(s,TagsInfoBean.class);
+
+                if(null != tagsInfoBean){
+
+                    listener.onSuccess(tagsInfoBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //搜索标签
+    public  static void search(String key,final HttpListener<SearchBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("key",key);
+
+        Observable observable = new HttpRequest().search(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SearchBean searchBean = GsonUtil.format(s,SearchBean.class);
+
+                if(null != searchBean){
+
+                    listener.onSuccess(searchBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+    //获取搜索标签详情
+    public  static void getHashtagDetail(String url,final HttpListener<HasTagDetailBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("url",url);
+
+        Observable observable = new HttpRequest().getHashtagDetail(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                HasTagDetailBean hasTagDetailBean = GsonUtil.format(s,HasTagDetailBean.class);
+
+                if(null != hasTagDetailBean){
+
+                    listener.onSuccess(hasTagDetailBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+    public  static void searchPic(String key,final HttpListener<String> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("key",key);
+
+        Observable observable = new HttpRequest().searchPic(map);
 
         new RequestManager() {
             @Override

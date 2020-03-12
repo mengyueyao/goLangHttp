@@ -2,12 +2,6 @@ package com.meng.myhttp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import com.followers.golanghttputil.bean.UserInfoBean;
-import com.followers.golanghttputil.http.HttpListener;
-import com.followers.golanghttputil.http.HttpUtil;
-import com.followers.golanghttputil.util.Utils;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,24 +11,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Utils.setContext(this);
-
-        Utils.setDebug(true);
-
-        HttpUtil.getUserInfo("24", new HttpListener<UserInfoBean>() {
-            @Override
-            public void onSuccess(UserInfoBean bean) {
-
-                Log.e("我去",bean.getCode()+"==");
-
-            }
-
-            @Override
-            public void onError(String error) {
-
-            }
-        });
     }
-
-
 }

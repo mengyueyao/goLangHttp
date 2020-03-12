@@ -72,7 +72,7 @@ public class RetrofitServiceManager {
                    .client(builder.build())
                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                    .addConverterFactory(LenientGsonConverterFactory.create(new Gson()))
-                   .baseUrl(ApiConfig.baseUrl)
+                   .baseUrl(Utils.getBaseUrl())
                    .build();
 
     }

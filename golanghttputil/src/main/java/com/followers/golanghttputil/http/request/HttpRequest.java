@@ -549,4 +549,101 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 获取首页标签列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getIndex(Map<String,Object> map){
+
+        return observable(httpService.getIndex(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 获取标签列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getTagList(Map<String,Object> map){
+
+        return observable(httpService.getTagList(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取标签详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getTagInfo(Map<String,Object> map){
+
+        return observable(httpService.getTagInfo(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 搜索标签
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> search(Map<String,Object> map){
+
+        return observable(httpService.search(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取搜索标签详情
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getHashtagDetail(Map<String,Object> map){
+
+        return observable(httpService.getHashtagDetail(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 搜索图片
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> searchPic(Map<String,Object> map){
+
+        return observable(httpService.searchPic(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

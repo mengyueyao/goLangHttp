@@ -143,6 +143,30 @@ public interface HttpService {
     @POST("hashtag/get_custom_detail")
     Observable<JsonElement> getCustomDetail(@Body Map<String,Object> map);
 
+    //获取首页标签列表
+    @POST("hashtag/index")
+    Observable<JsonElement> getIndex(@Body Map<String,Object> map);
+
+    //获取标签列表
+    @POST("hashtag/tag_list")
+    Observable<JsonElement> getTagList(@Body Map<String,Object> map);
+
+    //获取标签详情
+    @POST("hashtag/tag_info")
+    Observable<JsonElement> getTagInfo(@Body Map<String,Object> map);
+
+    //搜索标签
+    @POST("hashtag/search")
+    Observable<JsonElement> search(@Body Map<String,Object> map);
+
+    //获取搜索标签详情
+    @POST("hashtag/hashtag_detail")
+    Observable<JsonElement> getHashtagDetail(@Body Map<String,Object> map);
+
+    //搜索图片
+    @POST("hashtag/search_pic")
+    Observable<JsonElement> searchPic(@Body Map<String,Object> map);
+
 
 
 }

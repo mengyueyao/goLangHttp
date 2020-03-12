@@ -8,6 +8,8 @@ public class Utils {
 
     private static boolean debug;
 
+    private static String baseUrl;
+
     public static Context getContext() {
         return mContext;
     }
@@ -23,5 +25,13 @@ public class Utils {
 
     public static void setDebug(boolean debug) {
         Utils.debug = debug;
+    }
+
+    public static String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public static void setBaseUrl(String baseUrl) {
+        Utils.baseUrl = baseUrl;
     }
 }
