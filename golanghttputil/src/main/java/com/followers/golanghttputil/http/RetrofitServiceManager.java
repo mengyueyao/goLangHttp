@@ -1,16 +1,13 @@
 package com.followers.golanghttputil.http;
 
 
-import com.followers.golanghttputil.util.FileUtils;
 import com.followers.golanghttputil.util.Utils;
 import com.google.gson.Gson;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import mobile.Mobile;
-import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,9 +42,9 @@ public class RetrofitServiceManager {
 
             builder.readTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS);//读操作超时时间
 
-        String cacheFile;
+       // String cacheFile;
 
-        //是否有sd卡 缓存路径
+       /* //是否有sd卡 缓存路径
         if(FileUtils.hasSDCard()){
             cacheFile= Utils.getContext().getExternalCacheDir().getPath();
         }else{
@@ -57,14 +54,14 @@ public class RetrofitServiceManager {
 
         //缓存文件为100MB
         Cache cache = new Cache(new File(cacheFile, "HttpCache"), 1024 * 1024 * 100);
-
+*/
         //添加公共参数拦截器
 
              HttpCommonInterceptor httpCommonInterceptor = new HttpCommonInterceptor.Builder()
                      .addHeaderParams("Content-Type: application/json","Accept: application/json")
                      .builder();
 
-            builder.addInterceptor(httpCommonInterceptor).cache(cache);
+            builder.addInterceptor(httpCommonInterceptor);//.cache(cache);
 
             //创建一个Retrofit
 
