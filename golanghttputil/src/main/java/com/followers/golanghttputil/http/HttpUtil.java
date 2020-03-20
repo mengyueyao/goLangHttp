@@ -1267,6 +1267,9 @@ public class HttpUtil {
                 if(null != subVipBean && subVipBean.isStatus()){
 
                     listener.onSuccess(subVipBean.getData());
+                }else{
+
+                    listener.onError(subVipBean.getMessage());
                 }
             }
 
