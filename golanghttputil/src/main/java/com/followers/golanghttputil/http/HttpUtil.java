@@ -1246,5 +1246,39 @@ public class HttpUtil {
 
     }
 
+
+    //安装app奖励
+    public  static void install(String user_pk,String package_name,final HttpListener<String> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("package_name",package_name);
+
+        Observable observable = new HttpRequest().install(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(null != subVipBean && subVipBean.isStatus()){
+
+                    listener.onSuccess(subVipBean.getData());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
 }
 

@@ -646,4 +646,21 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+
+    /**
+     * 安装app奖励
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> install(Map<String,Object> map){
+
+        return observable(httpService.install(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

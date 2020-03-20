@@ -168,5 +168,10 @@ public interface HttpService {
     Observable<JsonElement> searchPic(@Body Map<String,Object> map);
 
 
+    //搜索图片
+    @POST("ad/install")
+    Observable<JsonElement> install(@Body Map<String,Object> map);
+
+
 
 }
