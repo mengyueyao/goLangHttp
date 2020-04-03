@@ -173,5 +173,15 @@ public interface HttpService {
     Observable<JsonElement> install(@Body Map<String,Object> map);
 
 
+    //获取发现列表
+    @POST("service/discovery")
+    Observable<JsonElement> getDiscovery(@Body Map<String,Object> map);
+
+
+    //购买发现服务
+    @POST("service/buy_discovery_servive")
+    Observable<JsonElement> buyDiscoveryServive(@Body Map<String,Object> map);
+
+
 
 }

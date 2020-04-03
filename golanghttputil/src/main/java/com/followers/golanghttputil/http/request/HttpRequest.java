@@ -663,4 +663,39 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+
+
+    /**
+     * 获取发现列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getDiscovery(Map<String,Object> map){
+
+        return observable(httpService.getDiscovery(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 购买发现服务
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> buyDiscoveryServive(Map<String,Object> map){
+
+        return observable(httpService.buyDiscoveryServive(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

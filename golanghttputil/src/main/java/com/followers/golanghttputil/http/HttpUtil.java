@@ -8,6 +8,7 @@ import com.followers.golanghttputil.bean.ConfigBean;
 import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.CustomCategoryBean;
 import com.followers.golanghttputil.bean.CustomDetailBean;
+import com.followers.golanghttputil.bean.DiscoveryBean;
 import com.followers.golanghttputil.bean.HasTagDetailBean;
 import com.followers.golanghttputil.bean.IndexBean;
 import com.followers.golanghttputil.bean.IsRateBean;
@@ -1283,5 +1284,83 @@ public class HttpUtil {
 
     }
 
+
+
+    //获取发现服务
+    public  static void getDiscovery(final HttpListener<DiscoveryBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        Observable observable = new HttpRequest().getDiscovery(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                DiscoveryBean discoveryBean = GsonUtil.format(s,DiscoveryBean.class);
+
+                if(null != discoveryBean){
+
+                    listener.onSuccess(discoveryBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+
+    //购买发现服务
+    public  static void buyDiscoveryServive(String user_pk,String product_id,String url,String count,final HttpListener<Integer> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",user_pk);
+
+        map.put("product_id",product_id);
+
+        map.put("url",url);
+
+        map.put("count",count);
+
+        Observable observable = new HttpRequest().buyDiscoveryServive(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SubVipBean subVipBean = GsonUtil.format(s,SubVipBean.class);
+
+                if(subVipBean.isStatus()){
+
+                    listener.onSuccess(0);
+
+                }else if(!subVipBean.isStatus() && subVipBean.getMessage().equals("Insufficient balance")){
+
+                    listener.onSuccess(1);
+
+                }else{
+
+                    listener.onSuccess(2);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
 }
 
