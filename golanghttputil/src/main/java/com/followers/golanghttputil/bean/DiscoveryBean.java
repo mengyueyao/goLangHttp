@@ -9,7 +9,7 @@ public class DiscoveryBean {
      * code : 200
      * message : OK
      * status : true
-     * data : [{"id":8,"title":"Instagram - Story Views [ Max - 5k ] [ CHEAPEST ] [ Superfast ] INSTANT","img":"http://img1.imgtn.bdimg.com/it/u=1703528148,792109249&fm=26&gp=0.jpg","type":"0","price":30,"min":100,"max":5000,"service_id":"1856"},{"id":9,"title":"Twitter - Followers [ Max - 5k ] [ HQ ] [ 30 days AUTO REFILL ] INSTANT-1hrs","img":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2007149643,2886370797&fm=26&gp=0.jpg","type":"0","price":80,"min":50,"max":4000,"service_id":"1633"},{"id":10,"title":"Facebook - Page Likes [ Max - 50k ] [ 30 Days Refill Guarantee ] INSTANT","img":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=241288357,1331462276&fm=26&gp=0.jpg","type":"0","price":50,"min":100,"max":50000,"service_id":"1638"},{"id":11,"title":"Instagram - ( S6 ) CUSTOM COMMENTS [ Superfast, Best Service ] [ Max - 10k ] SUPER INSTANT","img":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1703528148,792109249&fm=26&gp=0.jpg","type":"1","price":100,"min":5,"max":10000,"service_id":"1472"}]
+     * data : [{"id":1,"title":"Buy IGTV Views","img":"https://api.dibage.top/instagram.png","type":"0","price":1,"min":100,"max":100000,"enable":1,"service_id":"960","provider_service_id":3,"provider_service_name":"justanotherpanel","desc":"","created_at":"2020-04-04T16:37:23+08:00","update_at":"2020-04-04T23:10:31+08:00"},{"id":2,"title":"Instagram Comment","img":"https://api.dibage.top/instagram.png","type":"1","price":5,"min":100,"max":10000,"enable":1,"service_id":"1543","provider_service_id":3,"provider_service_name":"justanotherpanel","desc":"","created_at":"2020-04-04T18:59:56+08:00","update_at":"2020-04-04T23:26:32+08:00"},{"id":3,"title":"Buy Youtube Views","img":"https://api.dibage.top/youtube.png","type":"0","price":1,"min":200,"max":1000000,"enable":1,"service_id":"1800","provider_service_id":3,"provider_service_name":"justanotherpanel","desc":"","created_at":"2020-04-04T23:26:03+08:00","update_at":"2020-04-04T23:26:03+08:00"}]
      */
 
     private int code;
@@ -51,14 +51,20 @@ public class DiscoveryBean {
 
     public static class DataBean {
         /**
-         * id : 8
-         * title : Instagram - Story Views [ Max - 5k ] [ CHEAPEST ] [ Superfast ] INSTANT
-         * img : http://img1.imgtn.bdimg.com/it/u=1703528148,792109249&fm=26&gp=0.jpg
+         * id : 1
+         * title : Buy IGTV Views
+         * img : https://api.dibage.top/instagram.png
          * type : 0
-         * price : 30
+         * price : 1
          * min : 100
-         * max : 5000
-         * service_id : 1856
+         * max : 100000
+         * enable : 1
+         * service_id : 960
+         * provider_service_id : 3
+         * provider_service_name : justanotherpanel
+         * desc :
+         * created_at : 2020-04-04T16:37:23+08:00
+         * update_at : 2020-04-04T23:10:31+08:00
          */
 
         private int id;
@@ -68,7 +74,13 @@ public class DiscoveryBean {
         private int price;
         private int min;
         private int max;
+        private int enable;
         private String service_id;
+        private int provider_service_id;
+        private String provider_service_name;
+        private String desc;
+        private String created_at;
+        private String update_at;
 
         public int getId() {
             return id;
@@ -126,12 +138,60 @@ public class DiscoveryBean {
             this.max = max;
         }
 
+        public int getEnable() {
+            return enable;
+        }
+
+        public void setEnable(int enable) {
+            this.enable = enable;
+        }
+
         public String getService_id() {
             return service_id;
         }
 
         public void setService_id(String service_id) {
             this.service_id = service_id;
+        }
+
+        public int getProvider_service_id() {
+            return provider_service_id;
+        }
+
+        public void setProvider_service_id(int provider_service_id) {
+            this.provider_service_id = provider_service_id;
+        }
+
+        public String getProvider_service_name() {
+            return provider_service_name;
+        }
+
+        public void setProvider_service_name(String provider_service_name) {
+            this.provider_service_name = provider_service_name;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
+        public String getUpdate_at() {
+            return update_at;
+        }
+
+        public void setUpdate_at(String update_at) {
+            this.update_at = update_at;
         }
     }
 }
