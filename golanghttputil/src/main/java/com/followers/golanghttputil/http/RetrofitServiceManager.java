@@ -22,9 +22,9 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 public class RetrofitServiceManager {
 
-    private static final int DEFAULT_TIME_OUT = 5;//超时时间5秒
+    private static final int DEFAULT_TIME_OUT = 30;//超时时间30秒
 
-    private static final int DEFAULT_READ_TIME_OUT = 10;//读写的超时时间
+    private static final int DEFAULT_READ_TIME_OUT = 60;//读写的超时时间
 
     private static RetrofitServiceManager instance = null;
 

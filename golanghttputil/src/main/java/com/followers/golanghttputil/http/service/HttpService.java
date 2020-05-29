@@ -183,5 +183,14 @@ public interface HttpService {
     Observable<JsonElement> buyDiscoveryServive(@Body Map<String,Object> map);
 
 
+    //获取tiktok帖子列表
+    @POST("tiktok/feed")
+    Observable<JsonElement> getTiktokPost(@Body Map<String,Object> map);
+
+
+    //获取tiktok用户信息
+    @POST("tiktok/info")
+    Observable<JsonElement> getTiktokUserInfo(@Body Map<String,Object> map);
+
 
 }

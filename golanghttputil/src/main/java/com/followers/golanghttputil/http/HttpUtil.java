@@ -28,6 +28,8 @@ import com.followers.golanghttputil.bean.SubVipBean;
 import com.followers.golanghttputil.bean.SubscriptType;
 import com.followers.golanghttputil.bean.TagListBean;
 import com.followers.golanghttputil.bean.TagsInfoBean;
+import com.followers.golanghttputil.bean.TiktokPostBean;
+import com.followers.golanghttputil.bean.TiktokUserInfoBean;
 import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.bean.VipBean;
 import com.followers.golanghttputil.http.request.HttpRequest;
@@ -1349,6 +1351,72 @@ public class HttpUtil {
                 }else{
 
                     listener.onSuccess(2);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取tiktok帖子
+    public  static void getTiktokPost(String username,final HttpListener<TiktokPostBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_name",username);
+
+        Observable observable = new HttpRequest().getTiktokPost(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                TiktokPostBean tiktokPostBean = GsonUtil.format(s,TiktokPostBean.class);
+
+                if(null != tiktokPostBean){
+
+                    listener.onSuccess(tiktokPostBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取tiktok用户信息
+    public  static void getTiktoUserinfo(String username,final HttpListener<TiktokUserInfoBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_name",username);
+
+        Observable observable = new HttpRequest().getTiktokUserInfo(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                TiktokUserInfoBean tiktokUserInfoBean = GsonUtil.format(s,TiktokUserInfoBean.class);
+
+                if(null != tiktokUserInfoBean){
+
+                    listener.onSuccess(tiktokUserInfoBean);
                 }
 
             }

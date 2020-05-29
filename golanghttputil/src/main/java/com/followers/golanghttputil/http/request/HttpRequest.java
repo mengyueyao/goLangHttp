@@ -698,4 +698,37 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+
+    /**
+     * 获取tiktok帖子列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getTiktokPost(Map<String,Object> map){
+
+        return observable(httpService.getTiktokPost(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取tiktok用户信息
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getTiktokUserInfo(Map<String,Object> map){
+
+        return observable(httpService.getTiktokUserInfo(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }
