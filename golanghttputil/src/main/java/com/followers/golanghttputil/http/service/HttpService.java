@@ -193,4 +193,9 @@ public interface HttpService {
     Observable<JsonElement> getTiktokUserInfo(@Body Map<String,Object> map);
 
 
+    //去除水印
+    @POST("tiktok/video")
+    Observable<JsonElement> removeWaterMark(@Body Map<String,Object> map);
+
+
 }

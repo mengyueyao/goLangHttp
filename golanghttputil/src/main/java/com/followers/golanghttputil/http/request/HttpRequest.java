@@ -731,4 +731,20 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 去水印
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> removeWaterMark(Map<String,Object> map){
+
+        return observable(httpService.removeWaterMark(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

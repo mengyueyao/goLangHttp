@@ -1430,5 +1430,41 @@ public class HttpUtil {
         }.post(observable);
 
     }
+
+
+    //去水印
+    public  static void removeWaterMark(String userpk,String url,final HttpListener<TiktokUserInfoBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("video_url",url);
+
+        map.put("user_pk",userpk);
+
+        Observable observable = new HttpRequest().removeWaterMark(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+
+               /* TiktokUserInfoBean tiktokUserInfoBean = GsonUtil.format(s,TiktokUserInfoBean.class);
+
+                if(null != tiktokUserInfoBean){
+
+                    listener.onSuccess(tiktokUserInfoBean);
+                }*/
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
 }
 
