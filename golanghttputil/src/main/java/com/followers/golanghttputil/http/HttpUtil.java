@@ -20,6 +20,7 @@ import com.followers.golanghttputil.bean.PayCallBackBean;
 import com.followers.golanghttputil.bean.PayType;
 import com.followers.golanghttputil.bean.ProductBean;
 import com.followers.golanghttputil.bean.RateAddCoinsBean;
+import com.followers.golanghttputil.bean.RemovewaterMarkBean;
 import com.followers.golanghttputil.bean.RewardBean;
 import com.followers.golanghttputil.bean.SearchBean;
 import com.followers.golanghttputil.bean.ServiceBean;
@@ -1433,7 +1434,7 @@ public class HttpUtil {
 
 
     //去水印
-    public  static void removeWaterMark(String userpk,String url,final HttpListener<TiktokUserInfoBean> listener){
+    public  static void removeWaterMark(String userpk,String url,final HttpListener<RemovewaterMarkBean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
@@ -1448,12 +1449,12 @@ public class HttpUtil {
             public void success(String s) {
 
 
-               /* TiktokUserInfoBean tiktokUserInfoBean = GsonUtil.format(s,TiktokUserInfoBean.class);
+                RemovewaterMarkBean removewaterMarkBean = GsonUtil.format(s,RemovewaterMarkBean.class);
 
-                if(null != tiktokUserInfoBean){
+                if(null != removewaterMarkBean){
 
-                    listener.onSuccess(tiktokUserInfoBean);
-                }*/
+                    listener.onSuccess(removewaterMarkBean);
+                }
 
             }
 
