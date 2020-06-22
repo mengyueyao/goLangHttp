@@ -131,6 +131,9 @@ public class HttpCommonInterceptor implements Interceptor {
             Response response = chain.proceed(request);
             ResponseBody responseBody = response.peekBody(Long.MAX_VALUE);
             String result = responseBody.string();
+            if(Utils.isDebug()){
+                Log.e("result1",result+"===");
+            }
             result = Mobile.decrypt(result);
             if(Utils.isDebug()){
                 Log.e("result",result);
