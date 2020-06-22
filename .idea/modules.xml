@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/goLangHttp.iml" filepath="$PROJECT_DIR$/goLangHttp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/golanghttputil/golanghttputil.iml" filepath="$PROJECT_DIR$/golanghttputil/golanghttputil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="goLangHttp/app" />
+      <module fileurl="file://$PROJECT_DIR$/goLangHttp.iml" filepath="$PROJECT_DIR$/goLangHttp.iml" group="goLangHttp" />
+      <module fileurl="file://$PROJECT_DIR$/golanghttputil/golanghttputil.iml" filepath="$PROJECT_DIR$/golanghttputil/golanghttputil.iml" group="goLangHttp/golanghttputil" />
     </modules>
   </component>
 </project>

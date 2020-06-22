@@ -1434,13 +1434,15 @@ public class HttpUtil {
 
 
     //去水印
-    public  static void removeWaterMark(String userpk,String url,final HttpListener<RemovewaterMarkBean> listener){
+    public  static void removeWaterMark(String userpk,String username,String url,final HttpListener<RemovewaterMarkBean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
         map.put("video_url",url);
 
         map.put("user_pk",userpk);
+
+        map.put("user_name",username);
 
         Observable observable = new HttpRequest().removeWaterMark(map);
 
