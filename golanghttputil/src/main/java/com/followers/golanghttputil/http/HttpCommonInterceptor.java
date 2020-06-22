@@ -46,6 +46,9 @@ public class HttpCommonInterceptor implements Interceptor {
 
 
         //FormBody.Builder formBody = new FormBody.Builder();
+        if(Utils.isDebug()){
+            Log.e("requestBody",bodyString);
+        }
         String encode = Mobile.encrypt(bodyString);
         RequestBody formBody = RequestBody.create(MediaType.parse("application/json"), encode);
         Request.Builder requestBuilder = request.newBuilder();

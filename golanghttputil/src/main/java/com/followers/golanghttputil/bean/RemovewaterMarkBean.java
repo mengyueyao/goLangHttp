@@ -5,15 +5,15 @@ public class RemovewaterMarkBean {
 
     /**
      * code : 200
-     * message : OK
+     * message : 视频解析成功
+     * data : https://api-h2.tiktokv.com/aweme/v1/playwm/?video_id=v07025490000brhlm9go6l4qhp22um80
      * status : true
-     * data : {"videoUrl":"https://api-h2.tiktokv.com/aweme/v1/playwm/?video_id=v09044270000brjd0k94uh3hvel6v730"}
      */
 
     private int code;
     private String message;
+    private String data;
     private boolean status;
-    private DataBean data;
 
     public int getCode() {
         return code;
@@ -31,35 +31,19 @@ public class RemovewaterMarkBean {
         this.message = message;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public DataBean getData() {
-        return data;
-    }
-
-    public void setData(DataBean data) {
-        this.data = data;
-    }
-
-    public static class DataBean {
-        /**
-         * videoUrl : https://api-h2.tiktokv.com/aweme/v1/playwm/?video_id=v09044270000brjd0k94uh3hvel6v730
-         */
-
-        private String videoUrl;
-
-        public String getVideoUrl() {
-            return videoUrl;
-        }
-
-        public void setVideoUrl(String videoUrl) {
-            this.videoUrl = videoUrl;
-        }
     }
 }
