@@ -66,6 +66,7 @@ public class ParseBean {
         private boolean is_first_load;
         private String user_cover;
         private String user_pk;
+        private String user_name;
         private int followers;
         private int followings;
         private int posts;
@@ -102,6 +103,14 @@ public class ParseBean {
 
         public void setUser_pk(String user_pk) {
             this.user_pk = user_pk;
+        }
+
+        public String getUser_name() {
+            return user_name;
+        }
+
+        public void setUser_name(String user_name) {
+            this.user_name = user_name;
         }
 
         public int getFollowers() {
