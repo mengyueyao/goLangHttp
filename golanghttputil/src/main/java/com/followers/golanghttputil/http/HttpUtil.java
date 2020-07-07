@@ -1368,11 +1368,13 @@ public class HttpUtil {
 
 
     //获取tiktok帖子
-    public  static void getTiktokPost(String username,final HttpListener<TiktokPostBean> listener){
+    public  static void getTiktokPost(String username,String userId,final HttpListener<TiktokPostBean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
         map.put("user_name",username);
+
+        map.put("user_id",userId);
 
         Observable observable = new HttpRequest().getTiktokPost(map);
 
