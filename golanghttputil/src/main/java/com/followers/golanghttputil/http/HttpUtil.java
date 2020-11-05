@@ -1,6 +1,7 @@
 package com.followers.golanghttputil.http;
 
 
+import com.followers.golanghttputil.bean.AddFollowers;
 import com.followers.golanghttputil.bean.BuyCoinsBean;
 import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
@@ -9,6 +10,8 @@ import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.CustomCategoryBean;
 import com.followers.golanghttputil.bean.CustomDetailBean;
 import com.followers.golanghttputil.bean.DiscoveryBean;
+import com.followers.golanghttputil.bean.FollowersVipList;
+import com.followers.golanghttputil.bean.GetUserFollowersBean;
 import com.followers.golanghttputil.bean.HasTagDetailBean;
 import com.followers.golanghttputil.bean.IndexBean;
 import com.followers.golanghttputil.bean.IsRateBean;
@@ -1459,6 +1462,168 @@ public class HttpUtil {
 
                     listener.onSuccess(removewaterMarkBean);
                 }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //添加用户粉丝数量
+    public  static void addFollowers(String userpk,String follower_count,final HttpListener<AddFollowers> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("follower_count",follower_count);
+
+        Observable observable = new HttpRequest().addFollowers(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                AddFollowers addFollowers = GsonUtil.format(s,AddFollowers.class);
+
+                if(null != addFollowers){
+
+                    listener.onSuccess(addFollowers);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取用户粉丝数量
+    public  static void getUserFollowers(String userpk,int days ,final HttpListener<GetUserFollowersBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("days",days+"");
+
+        Observable observable = new HttpRequest().getUserFollowers(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                GetUserFollowersBean getUserFollowersBean = GsonUtil.format(s,GetUserFollowersBean.class);
+
+                if(null != getUserFollowersBean){
+
+                    listener.onSuccess(getUserFollowersBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //获取金币vip列表
+    public  static void getFollowersVipList(final HttpListener<FollowersVipList> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        Observable observable = new HttpRequest().getFollowersVipList(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                FollowersVipList followersVipList = GsonUtil.format(s,FollowersVipList.class);
+
+                if(null != followersVipList){
+
+                    listener.onSuccess(followersVipList);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //购买金币vip
+    public  static void buyFollowersVip(String userpk,int product_id ,final HttpListener<AddFollowers> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("product_id",product_id+"");
+
+        Observable observable = new HttpRequest().buyFollowersVip(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                AddFollowers addFollowers = GsonUtil.format(s,AddFollowers.class);
+
+                if(null != addFollowers){
+
+                    listener.onSuccess(addFollowers);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+    //购买金币vip的状态
+    public  static void buyFollowersStatus(String userpk,final HttpListener<GetUserFollowersBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        Observable observable = new HttpRequest().buyFollowersStatus(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
 
             }
 

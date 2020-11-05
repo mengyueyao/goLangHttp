@@ -747,4 +747,84 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 添加用户粉丝数量
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> addFollowers(Map<String,Object> map){
+
+        return observable(httpService.addFollowers(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取用户粉丝数量
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getUserFollowers(Map<String,Object> map){
+
+        return observable(httpService.getUserFollowers(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 获取金币vip列表
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getFollowersVipList(Map<String,Object> map){
+
+        return observable(httpService.getFollowersVipList(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 金币购买vip
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> buyFollowersVip(Map<String,Object> map){
+
+        return observable(httpService.buyFollowersVip(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 购买vip状态
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> buyFollowersStatus(Map<String,Object> map){
+
+        return observable(httpService.buyFollowersStatus(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

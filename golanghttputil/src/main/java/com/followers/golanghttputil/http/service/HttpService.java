@@ -198,4 +198,33 @@ public interface HttpService {
     Observable<JsonElement> removeWaterMark(@Body Map<String,Object> map);
 
 
+    //添加用户粉丝数量
+    @POST("user_followers")
+    Observable<JsonElement> addFollowers(@Body Map<String,Object> map);
+
+
+    //获取用户粉丝数量
+    @POST("user_followers_data")
+    Observable<JsonElement> getUserFollowers(@Body Map<String,Object> map);
+
+
+    //获取金币vip列表
+    @POST("followers_vip_list")
+    Observable<JsonElement> getFollowersVipList(@Body Map<String,Object> map);
+
+
+    //金币购买vip
+    @POST("buy_followers_vip")
+    Observable<JsonElement> buyFollowersVip(@Body Map<String,Object> map);
+
+
+    //vip状态
+    @POST("buy_followers_status")
+    Observable<JsonElement> buyFollowersStatus(@Body Map<String,Object> map);
+
+
+
+
+
+
 }
