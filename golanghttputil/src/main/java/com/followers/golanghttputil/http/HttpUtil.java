@@ -36,6 +36,7 @@ import com.followers.golanghttputil.bean.TiktokPostBean;
 import com.followers.golanghttputil.bean.TiktokUserInfoBean;
 import com.followers.golanghttputil.bean.UserInfoBean;
 import com.followers.golanghttputil.bean.VipBean;
+import com.followers.golanghttputil.bean.VipStatusBean;
 import com.followers.golanghttputil.http.request.HttpRequest;
 import com.followers.golanghttputil.http.request.RequestManager;
 import com.followers.golanghttputil.util.GsonUtil;
@@ -1612,7 +1613,7 @@ public class HttpUtil {
     }
 
     //购买金币vip的状态
-    public  static void buyFollowersStatus(String userpk,final HttpListener<GetUserFollowersBean> listener){
+    public  static void buyFollowersStatus(String userpk,final HttpListener<VipStatusBean> listener){
 
         Map<String,Object> map = new HashMap<>();
 
@@ -1624,6 +1625,12 @@ public class HttpUtil {
             @Override
             public void success(String s) {
 
+                VipStatusBean vipStatusBean = GsonUtil.format(s,VipStatusBean.class);
+
+                if(null != vipStatusBean){
+
+                    listener.onSuccess(vipStatusBean);
+                }
 
             }
 
