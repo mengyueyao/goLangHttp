@@ -827,4 +827,37 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 保存标签
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> saveTags(Map<String,Object> map){
+
+        return observable(httpService.saveTags(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+
+    /**
+     * 获取标签
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> getTags(Map<String,Object> map){
+
+        return observable(httpService.getTags(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

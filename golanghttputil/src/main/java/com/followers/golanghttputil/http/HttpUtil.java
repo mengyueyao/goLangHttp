@@ -1,16 +1,22 @@
 package com.followers.golanghttputil.http;
 
 
+import android.app.Activity;
+import android.content.Context;
+
+import com.bumptech.glide.Glide;
 import com.followers.golanghttputil.bean.AddFollowers;
 import com.followers.golanghttputil.bean.BuyCoinsBean;
 import com.followers.golanghttputil.bean.BuyServiceBean;
 import com.followers.golanghttputil.bean.CoinsBean;
+import com.followers.golanghttputil.bean.CommBean;
 import com.followers.golanghttputil.bean.ConfigBean;
 import com.followers.golanghttputil.bean.ConsumeBean;
 import com.followers.golanghttputil.bean.CustomCategoryBean;
 import com.followers.golanghttputil.bean.CustomDetailBean;
 import com.followers.golanghttputil.bean.DiscoveryBean;
 import com.followers.golanghttputil.bean.FollowersVipList;
+import com.followers.golanghttputil.bean.GetTagsBean;
 import com.followers.golanghttputil.bean.GetUserFollowersBean;
 import com.followers.golanghttputil.bean.HasTagDetailBean;
 import com.followers.golanghttputil.bean.IndexBean;
@@ -25,6 +31,7 @@ import com.followers.golanghttputil.bean.ProductBean;
 import com.followers.golanghttputil.bean.RateAddCoinsBean;
 import com.followers.golanghttputil.bean.RemovewaterMarkBean;
 import com.followers.golanghttputil.bean.RewardBean;
+import com.followers.golanghttputil.bean.SaveTagsBean;
 import com.followers.golanghttputil.bean.SearchBean;
 import com.followers.golanghttputil.bean.ServiceBean;
 import com.followers.golanghttputil.bean.ServiceType;
@@ -41,9 +48,14 @@ import com.followers.golanghttputil.http.request.HttpRequest;
 import com.followers.golanghttputil.http.request.RequestManager;
 import com.followers.golanghttputil.util.GsonUtil;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import mobile.Mobile;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 public class HttpUtil {
@@ -1643,5 +1655,131 @@ public class HttpUtil {
         }.post(observable);
 
     }
+
+    //上传图片
+    public static void uploadImage(final Context context, final String imageUrl , final HttpListener<CommBean> listener) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                File file = null;
+                try {
+                    file = Glide.with(context)
+                            .load(imageUrl)
+                            .downloadOnly(200, 200)
+                            .get();
+                    //上传图片需要MultipartBody
+                    RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpg"), file);
+                    MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName()+".jpg", requestBody);
+                    RetrofitUtils.getInstance().upLoadImage(body).setHttpListener(new RetrofitUtils.HttpListener() {
+                        @Override
+                        public void onSuccess(String jsonStr) {
+
+                            final CommBean commBean = GsonUtil.format(Mobile.decrypt(jsonStr),CommBean.class);
+
+                            if(null != commBean){
+
+                                ((Activity)context).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        listener.onSuccess(commBean);
+                                    }
+                                });
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onError(final String error) {
+                            ((Activity)context).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    listener.onError(error);
+                                }
+                            });
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    //保存标签
+    public  static void saveTags(String userpk,String imageurl,String title,String content,final HttpListener<SaveTagsBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("content",content);
+
+        map.put("title",title);
+
+        map.put("image",imageurl);
+
+        Observable observable = new HttpRequest().saveTags(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                SaveTagsBean saveTagsBean = GsonUtil.format(s,SaveTagsBean.class);
+
+                if(null != saveTagsBean){
+
+                    listener.onSuccess(saveTagsBean);
+                }
+
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+    //获取标签
+    public  static void getTags(String userpk,final HttpListener<GetTagsBean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        Observable observable = new HttpRequest().getTags(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                GetTagsBean getTagsBean = GsonUtil.format(s,GetTagsBean.class);
+
+                if(null != getTagsBean){
+
+                    listener.onSuccess(getTagsBean);
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
 }
 

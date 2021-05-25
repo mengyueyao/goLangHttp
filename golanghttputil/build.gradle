@@ -45,4 +45,7 @@ dependencies {
 
     //加解密包
    // implementation(name: 'mobile', ext: 'aar')
+
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 }

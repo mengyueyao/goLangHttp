@@ -132,7 +132,7 @@ public class HttpCommonInterceptor implements Interceptor {
             ResponseBody responseBody = response.peekBody(Long.MAX_VALUE);
             String result = responseBody.string();
             if(Utils.isDebug()){
-                Log.e("result1",result+"===");
+                Log.e("result1",result+"");
             }
             result = Mobile.decrypt(result);
             if(Utils.isDebug()){
