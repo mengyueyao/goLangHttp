@@ -860,4 +860,36 @@ public class HttpRequest extends ObjectLoader {
             }
         });
     }
+
+    /**
+     * 删除标签
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> deleteTags(Map<String,Object> map){
+
+        return observable(httpService.deleteTags(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     * 编辑标签
+     * @param map
+     * @return
+     */
+    public Observable<JsonElement> editTags(Map<String,Object> map){
+
+        return observable(httpService.editTags(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+                return s;
+            }
+        });
+    }
 }

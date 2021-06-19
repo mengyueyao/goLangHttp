@@ -1781,5 +1781,74 @@ public class HttpUtil {
 
     }
 
+
+    //删除标签
+    public  static void deleteTags(String userpk,String id,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("id",id);
+
+        Observable observable = new HttpRequest().deleteTags(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                CommBean commBean = GsonUtil.format(s,CommBean.class);
+                if(null != commBean){
+                    listener.onSuccess(commBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
+
+    //编辑标签
+    public  static void editTags(String userpk,String id,String title,String content,String image,final HttpListener<Boolean> listener){
+
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("user_pk",userpk);
+
+        map.put("id",id);
+
+        map.put("title",title);
+
+        map.put("content",content);
+
+        map.put("image",image);
+
+        Observable observable = new HttpRequest().editTags(map);
+
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+                CommBean commBean = GsonUtil.format(s,CommBean.class);
+                if(null != commBean){
+                    listener.onSuccess(commBean.isStatus());
+                }
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+
+            }
+        }.post(observable);
+
+    }
+
 }
 

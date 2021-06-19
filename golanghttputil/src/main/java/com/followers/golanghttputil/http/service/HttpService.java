@@ -239,9 +239,18 @@ public interface HttpService {
     Observable<JsonElement> saveTags(@Body Map<String,Object> map);
 
 
-    //保存标签
+    //获取标签
     @POST("ins/get_img_tag")
     Observable<JsonElement> getTags(@Body Map<String,Object> map);
+
+    //删除标签
+    @POST("ins/delete_img_tag")
+    Observable<JsonElement> deleteTags(@Body Map<String,Object> map);
+
+
+    //编辑标签
+    @POST("ins/update_img_tag")
+    Observable<JsonElement> editTags(@Body Map<String,Object> map);
 
 
 }
